@@ -1,0 +1,5 @@
+C:\Users\alex\Documents\My Dropbox\Projects\sudoku_resolver\solver\bin\Debug\solver.exe
+C:\Users\alex\Documents\My Dropbox\Projects\sudoku_resolver\solver\bin\Debug\solver.pdb
+C:\Users\alex\Documents\My Dropbox\Projects\sudoku_resolver\solver\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\alex\Documents\My Dropbox\Projects\sudoku_resolver\solver\obj\x86\Debug\solver.exe
+C:\Users\alex\Documents\My Dropbox\Projects\sudoku_resolver\solver\obj\x86\Debug\solver.pdb
