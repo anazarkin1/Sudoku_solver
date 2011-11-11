@@ -1,5 +1,5 @@
-﻿0. SOlve bug with getSquareNeighbours() - returns wrong Neighbours!
-1. Rewrite readFromFile() using separators
-2. Add simple logic for puzzle solving
+﻿0. SOlve bug with getSquareNeighbours() - returns wrong Neighbours! SOLVED
+1. Rewrite readFromFile() using separators SOLVED
+2. Add simple logic for puzzle solving SOLVED
 3. Add Puzzle class
 4. Rewrite Program structure using Puzzle class

@@ -33,14 +33,7 @@ namespace solver
                 //    }
 
                 st.checkSquareCandidates();
-                //for (int i = 0; i < 9; i++)
-
-                //    for (int j = 0; j < 9; j++)
-                //    {
-                //        foreach (var el in st.candidates[i, j])
-                //            Console.Write(el.ToString() + " ");
-                //        Console.WriteLine();
-                //    }
+               
                 Log.Info("Performed checkSquareCandidates()", "Main.cs, Main()");
 
                 Log.Info(String.Format("isCorrect() returned : {0}", st.isCorrect()), "Main.cs,Main()");

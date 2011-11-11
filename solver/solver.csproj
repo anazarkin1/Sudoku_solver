@@ -39,12 +39,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Puzzle.cs" />
     <Compile Include="State.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sudokus.txt" />
+    <Content Include="test.txt" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

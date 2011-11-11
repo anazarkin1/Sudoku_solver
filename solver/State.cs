@@ -49,7 +49,6 @@ namespace solver
             return colVals;
         }
 
-
         /// <summary>
         /// Returns array with the current row values
         /// </summary>
@@ -66,39 +65,34 @@ namespace solver
             return rowVals;
 
         }
-        /*
-          0 1 2   3 4 5  6 7 8
-        0 5 5 5   5 5 5  5 5 5 
-        1 4 4 4   4 4 4  4 4 4
-        2 6 6 6   6 6 6  6 6 6
-         
-        3 1 1 1   1 1 1  1 1 1
-        4 9 9 9   9 9 9  9 9 9
-        5 2 2 2   2 2 2  2 2 2 
-         
-         */
+
+        /// <summary>
+        /// Returns array with the current cell neighbours
+        /// </summary>
+        /// <param name="x">X position</param>
+        /// <param name="y">Y position</param>
+        /// <returns></returns>
         public int[] getSquareNeighbours(int x, int y)
         {
             int[] squareNeighs = new int[9];
-            //if (x != 0)
-            //    x--;
-            //if (y != 0)
-            //    y--;
-            while(x%3!=0)
-                x--;
-            while(y % 3 != 0) 
-                y--;
-            int max = y + 2;
+            
+            int minx = (x / 3) * 3;
+            int miny = (y / 3) * 3;
+            int maxy = miny + 3;
+            int maxx = minx + 3;
             int counter = 0;
 
-            while (counter < 9)
+            for (int i = minx; i < maxx; i++)
             {
-                squareNeighs[counter] = field[x, y];
-                counter++;
-                y++;
-                if (y > max)
-                { y -=2; x++; }
+
+                for (int j = miny; j < maxy; j++)
+                {
+                    squareNeighs[counter] = field[i, j];
+                    counter++;
+                }
             }
+
+          
 
             return squareNeighs;
         }
@@ -138,15 +132,17 @@ namespace solver
                         candidates[i, j].Remove(squareNeighbours[k]);
                     flag  = true;
                 }
+                else if (field[i, j] != 0)
+                {
+                    candidates[i, j].Clear();
+                }
                     j++;
 
                 if (j > 8)
                 { i++; j = 0; }
                 if(i>8 && flag)
                 { i = 0; j = 0; flag = false; }
-
-
-                //Console.WriteLine("!!!!Doing {0},{1}", i, j);
+                             
             }
         }
 
@@ -166,25 +162,27 @@ namespace solver
         /// Reads Puzzle from File
         /// </summary>
         /// <param name="filename">File name with Puzzle</param>
-        public void readFromFile(string filename)     //TODO: REWRITE WITH SEPARATORS
+        public void readFromFile(string filename)     
 		{
 			using (TextReader reader = File.OpenText("test.txt"))
 			{
-				string text = reader.ReadLine ();
                 int counter = 0;
                 
                 for(int i = 0; i < 9; i++)
                 {
+
+                    string text = reader.ReadLine();
                     for (int j = 0; j < 9; j++)
                     {
                         int num = 0;
-                        Int32.TryParse(text[counter].ToString(), out num);
-                        if (num == 0)
+                        if (Char.IsDigit(text[j]))
                         {
-                            candidates[i, j] = new List<int>(defaults);
-                            status[i, j] = 1;
+                            Int32.TryParse(text[j].ToString(), out num);
+                           
+                                candidates[i, j] = new List<int>(defaults);
+                                status[i, j] = 1;
+                           
                         }
-                        
                         field[i, j] = num;
                         counter++;
                     }
@@ -236,7 +234,7 @@ namespace solver
         /// <returns>False if is not completed, True if is completed</returns>
         public bool isCompleted()
         {
-            if (isCorrect() == true)
+            if (isCorrect() != true)
             {
                 return false;
             }
