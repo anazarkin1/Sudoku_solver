@@ -9,7 +9,7 @@ namespace solver
 {
 	public class State
 	{
-        
+        //
         public List<int> defaults = Enumerable.Range(1, 9).ToList<int>();
 		public int[,] field = new int[9,9];
 		public int[,] status = new int[9,9];
