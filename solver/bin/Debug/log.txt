@@ -1,0 +1,9 @@
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Info : Program started : in module :
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Error : Cell 1x3 has no candidates and currently is not set : in module :State.cs,isCorrect()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Error : isCorrect() returned false on 1,4 : in module :State.cs,checkSquareCandidates()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Info : Performed checkSquareCandidates() : in module :Main.cs, Main()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Error : Cell 1x3 has no candidates and currently is not set : in module :State.cs,isCorrect()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Info : isCorrect() returned : False : in module :Main.cs,Main()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Error : Cell 1x3 has no candidates and currently is not set : in module :State.cs,isCorrect()
+MainTraceSource Information: 0 : 11-11-2011 23:40:58 :Info : isCompleted() returned : False : in module :Main.cs,Main()
+MainTraceSource Information: 0 : 11-11-2011 23:41:00 :Info : Successfully exiting : in module :Main.cs, Main()
