@@ -102,10 +102,12 @@ namespace solver
         /// </summary>
         public void checkSquareCandidates()
         {
-            bool flag = false;
+           
             int i = 0, j = 0;
+           
             while (i<9)
             {
+                 bool isChanged = false;
                 if (isCorrect() == false)
                 {
                     Log.Error(String.Format("isCorrect() returned false on {0},{1}",i,j), "State.cs,checkSquareCandidates()");
@@ -116,32 +118,60 @@ namespace solver
                     field[i, j] = candidates[i, j].First();
                     candidates[i, j].Clear();
 
-                    flag = true;
+                    isChanged = true;
                 }
                 else if (field[i, j] == 0)
                 {
+                    
                     int[] rowVals = getRowValues(j);
                     int[] colVals = getColumnValues(i);
                     int[] squareNeighbours = getSquareNeighbours(i, j);
                     
-                    for (int k = 0; k < rowVals.Length; k++)
-                        candidates[i, j].Remove(rowVals[k]);
-                    for(int k  =0; k < colVals.Length;k++)
-                        candidates[i, j].Remove(colVals[k]);
-                    for(int k =0; k < squareNeighbours.Length;k++)
-                        candidates[i, j].Remove(squareNeighbours[k]);
-                    flag  = true;
+                    foreach (var k in rowVals)
+                    {
+                        if (candidates[i, j].Contains(k) ==true)
+                        {
+                            isChanged = true;
+                            candidates[i, j].Remove(k);
+                        }
+                     
+                    }
+                     foreach (var k in colVals)
+                     {
+                         if (candidates[i, j].Contains(k) ==true)
+                         {
+                             isChanged = true;
+                             candidates[i, j].Remove(k);
+                         }
+                     }
+                     foreach (var k in squareNeighbours)
+                    {
+                        if (candidates[i, j].Contains(k) == true)
+                        {
+                            isChanged = true;
+                            candidates[i, j].Remove(k);
+                        }
+                     }
+                    //for (int k = 0; k < rowVals.Length; k++)
+                    //    candidates[i, j].Remove(rowVals[k]);
+                    //for(int k  =0; k < colVals.Length;k++)
+                    //    candidates[i, j].Remove(colVals[k]);
+                    //for(int k =0; k < squareNeighbours.Length;k++)
+                    //    candidates[i, j].Remove(squareNeighbours[k]);
+                    
                 }
-                else if (field[i, j] != 0)
+                else if (field[i, j] != 0 && candidates[i,j].Count >0)
                 {
                     candidates[i, j].Clear();
+                    isChanged = true;
                 }
                     j++;
+                    if (isChanged == true)
+                    { i = 0; j = 0; }
 
                 if (j > 8)
                 { i++; j = 0; }
-                if(i>8 && flag)
-                { i = 0; j = 0; flag = false; }
+                
                              
             }
         }
@@ -167,25 +197,43 @@ namespace solver
 			using (TextReader reader = File.OpenText("test.txt"))
 			{
                 int counter = 0;
-                
-                for(int i = 0; i < 9; i++)
-                {
+                string text = reader.ReadToEnd();
+                text = text.Replace(Environment.NewLine, "").TrimEnd(',', ' ', '\n', '\r', '.');
+                //text = text.TrimEnd
+                Log.Info(String.Format("Puzzle Loaded From {0} file", filename),"ReadFromFile()");
+                Log.Info(String.Format("Contains {0} numbers",text.Length),"ReadfromFile");
+                //int charNum = 0;
+                //while (charNum < 81)
+                //{
 
-                    string text = reader.ReadLine();
-                    for (int j = 0; j < 9; j++)
-                    {
+                //    charNum++;
+                    
+                //    if (charNum % 9 == 0)
+                //        Log.Info("", "");
+                //}
+
+                Console.WriteLine(text);
+                Console.WriteLine(text.Length);
+                
+                int i = 0, j  =0;
+               while(counter<81)
+               {
                         int num = 0;
-                        if (Char.IsDigit(text[j]))
+                        if (Char.IsDigit(text[counter]))
                         {
-                            Int32.TryParse(text[j].ToString(), out num);
+                            Int32.TryParse(text[counter].ToString(), out num);
                            
                                 candidates[i, j] = new List<int>(defaults);
                                 status[i, j] = 1;
                            
                         }
                         field[i, j] = num;
+                        j++;
+                        if (j > 8)
+                        { j = 0; i++; }
+
                         counter++;
-                    }
+                    
                 }
                 
 			}
@@ -213,20 +261,23 @@ namespace solver
         /// <returns>False if is not correct, True if is correct</returns>
         public bool isCorrect()
         {
-            for(int i =0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
+            {
                 for (int j = 0; j < 9; j++)
                 {
                     if (field[i, j] == 0 && candidates[i, j].Count == 0)
                     {
-                        Log.Error(String.Format("Cell {0}x{1} has no candidates and currently is not set", i, j),"State.cs,isCorrect()");
+                        Log.Error(String.Format("Cell {0}x{1} has no candidates and currently is not set", i, j), "State.cs,isCorrect()");
                         return false;
                     }
                 }
 
+            }
 
             return true;
 
         }
+
 
         /// <summary>
         /// Checks if puzzle is completed and correct
@@ -251,7 +302,17 @@ namespace solver
             return true;
 
         }
-
+        public void showCandidates()
+        {
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write(":{0}:", this.field[i, j]);
+                    foreach (var k in this.candidates[i, j])
+                        Console.Write("{0} ", k);
+                    Console.WriteLine();
+                }
+        }
 
         //static int Main()
         //{

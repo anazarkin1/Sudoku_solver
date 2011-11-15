@@ -5,6 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "solver", "solver.csproj", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80B87DB8-A992-4D5E-9C8E-7C50E99A22CE}"
 	ProjectSection(SolutionItems) = preProject
+		Algorithms.cs = Algorithms.cs
 		bin\Debug\App.config = bin\Debug\App.config
 	EndProjectSection
 EndProject

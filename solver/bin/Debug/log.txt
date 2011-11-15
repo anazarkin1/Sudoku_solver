@@ -1,5 +1,7 @@
-MainTraceSource Information: 0 : 12-11-2011 11:21:54 :Info : Program started : in module :
-MainTraceSource Information: 0 : 12-11-2011 11:21:54 :Info : Performed checkSquareCandidates() : in module :Main.cs, Main()
-MainTraceSource Information: 0 : 12-11-2011 11:21:54 :Info : isCorrect() returned : True : in module :Main.cs,Main()
-MainTraceSource Information: 0 : 12-11-2011 11:21:54 :Info : isCompleted() returned : True : in module :Main.cs,Main()
-MainTraceSource Information: 0 : 12-11-2011 11:22:02 :Info : Successfully exiting : in module :Main.cs, Main()
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : Program started : in module :
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : Puzzle Loaded From test.txt file : in module :ReadFromFile()
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : Contains 81 numbers : in module :ReadfromFile
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : Performed checkSquareCandidates() : in module :Main.cs, Main()
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : isCorrect() returned : True : in module :Main.cs,Main()
+MainTraceSource Information: 0 : 16-11-2011 11:56:13 :Info : isCompleted() returned : True : in module :Main.cs,Main()
+MainTraceSource Information: 0 : 16-11-2011 11:56:43 :Info : Successfully exiting : in module :Main.cs, Main()
