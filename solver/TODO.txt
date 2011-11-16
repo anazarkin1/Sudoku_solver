@@ -1,6 +1,7 @@
-﻿Add Prediction solving method
+﻿Add Prediction solving method									SOLVED
 SOlve bug with getSquareNeighbours() - returns wrong Neighbours! SOLVED
-Rewrite readFromFile() using separators SOLVED
-Add simple logic for puzzle solving SOLVED
-Add Puzzle class
-Rewrite Program structure using Puzzle class
+Rewrite readFromFile() using separators							SOLVED
+Add simple logic for puzzle solving								SOLVED
+Add Puzzle class												SOLVED
+Rewrite Program structure using Puzzle class					SOLVED
+Add simple WPF form

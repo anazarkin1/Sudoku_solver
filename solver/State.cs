@@ -302,7 +302,11 @@ namespace solver
             return true;
 
         }
-        public void showCandidates()
+
+        /// <summary>
+        /// Shows each positon's candidates
+        /// </summary>
+        private void showCandidates()
         {
             for (int i = 0; i < 9; i++)
                 for (int j = 0; j < 9; j++)
@@ -314,27 +318,9 @@ namespace solver
                 }
         }
 
-        //static int Main()
-        //{
-        //    Log.Info("Program started", "");
-        //    try
-        //    {
-               
-        //        State st = new State ();
-                
-        //        st.readFromFile("test.txt");
-        //        st.showField();
-        //    }
-           
-           
-        //     catch (Exception ex)
-        //    {
-        //        Log.Error(ex, "State.cs, Main()");
-        //    }
-            
-        //    Log.Info("Successfully exiting","State.cs, Main()");
-        //    return 0;
-        //}
+       
 	}
+
+    
 }
 
